@@ -1,7 +1,7 @@
 {
-  "name": "PhotoPPT Mobile（from Desktop v2）",
+  "name": "PhotoPPT Mobile Inline v2 (v3)",
   "short_name": "PhotoPPT",
-  "start_url": "./index.html",
+  "start_url": "./index.html?v=3",
   "display": "standalone",
   "background_color": "#0b0f19",
   "theme_color": "#0b0f19",
