@@ -3,16 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>PhotoPPT Mobile（內嵌照片）</title>
+  <title>PhotoPPT Mobile Inline v2</title>
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#0b0f19">
   <style>
-    :root{
-      --bg:#0b0f19; --card:#121826; --muted:#9aa4b2; --stroke:#273042;
-      --accent:#06b6d4; --accent2:#22d3ee;
-    }
+    :root{ --bg:#0b0f19; --card:#121826; --muted:#9aa4b2; --stroke:#273042; --accent:#06b6d4; --accent2:#22d3ee; }
     *{box-sizing:border-box} html,body{height:100%}
-    body{margin:0;background:var(--bg);color:#e5e7eb;font-family:system-ui,-apple-system,Segoe UI,Roboto,Noto Sans TC,Helvetica,Arial;padding-bottom:84px}
+    body{margin:0;background:var(--bg);color:#e5e7eb;font-family:system-ui,-apple-system,Segoe UI,Roboto,Noto Sans TC,Helvetica,Arial;padding-bottom:90px}
     header{position:sticky;top:0;background:linear-gradient(180deg,#0b0f19 0%,rgba(11,15,25,.85) 100%);backdrop-filter:blur(6px);border-bottom:1px solid var(--stroke);z-index:5}
     .wrap{max-width:980px;margin:0 auto;padding:12px}
     h1{margin:0;font-size:18px;line-height:1.2}
@@ -43,7 +40,7 @@
 <body>
 <header>
   <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
-    <h1>📱 PhotoPPT Mobile <span class="muted" style="font-weight:400">（內嵌照片）</span></h1>
+    <h1>📱 PhotoPPT Mobile Inline v2 <span class="muted">（對齊 Desktop inline 版）</span></h1>
     <div style="display:flex;gap:8px">
       <button class="btn ghost" id="btnLoadJson">📂 載入</button>
       <button class="btn ghost" id="btnSaveJson">💾 存檔</button>
@@ -56,7 +53,7 @@
   <section class="card"><div class="body">
     <h2>0) 基本資訊</h2>
     <div class="row">
-      <div><label class="muted">案場名稱</label><input id="site_name" type="text" inputmode="text" placeholder="例：XX國小屋頂案"/></div>
+      <div><label class="muted">案場名稱</label><input id="site_name" type="text" placeholder="例：XX國小屋頂案"/></div>
       <div><label class="muted">現勘日期</label><input id="survey_date" type="date"/></div>
       <div><label class="muted">現勘人員</label><input id="inspector" type="text" placeholder="例：王小明"/></div>
       <div><label class="muted">聯絡人/電話（選填）</label><input id="contact" type="text" inputmode="tel" placeholder="例：林先生 09xx-xxx-xxx"/></div>
@@ -158,6 +155,50 @@
       <label class="inline"><span class="muted" style="width:80px;display:inline-block">電號</span> <input id="meter_no" type="text" inputmode="numeric" placeholder="例：1234567890"/></label>
     </div>
   </div></section>
+
+  <!-- 7 設備預計設置位置（照片化） -->
+  <section class="card"><div class="body">
+    <h2>7) 設備預計設置位置</h2>
+    <div class="sec">
+      <div><span class="muted">太陽光電錶箱</span><div id="ph-loc_pv_meter" class="chips"></div></div>
+      <div><span class="muted">機房</span><div id="ph-loc_room" class="chips"></div></div>
+      <div><span class="muted">高壓設備</span><div id="ph-loc_hv" class="chips"></div></div>
+      <div><span class="muted">台電配電場</span><div id="ph-loc_taipower" class="chips"></div></div>
+      <div><span class="muted">自備桿</span><div id="ph-loc_pole" class="chips"></div></div>
+      <div><span class="muted">開關箱</span><div id="ph-loc_switch" class="chips"></div></div>
+    </div>
+  </div></section>
+
+  <!-- 8 施工路線與暫放 -->
+  <section class="card"><div class="body">
+    <h2>8) 施工路線與物料暫放</h2>
+    <div class="sec">
+      <label class="inline">現場是否有施工路線 <input type="radio" name="has_route" value="否"> 否 <input type="radio" name="has_route" value="是" style="margin-left:14px"> 是</label>
+      <div id="ph-route" class="chips" style="display:none"></div>
+      <label class="inline">道路寬 <input id="route_width" type="number" style="width:100px"> 公尺</label>
+      <label class="inline">現場是否有物料暫放區 <input type="radio" name="has_staging" value="是"> 是 <input type="radio" name="has_staging" value="否" style="margin-left:14px"> 否</label>
+    </div>
+  </div></section>
+
+  <!-- 9 既設容量 -->
+  <section class="card"><div class="body">
+    <h2>9) 現場既設太陽光電容量</h2>
+    <div class="sec">
+      <label class="inline"><span class="muted" style="width:80px;display:inline-block">名稱 1</span> <input id="exist_name1" type="text" style="width:200px"> <span class="muted" style="width:90px;display:inline-block;margin-left:12px">容量(kW)</span> <input id="exist_kw1" type="number" style="width:120px"></label>
+      <label class="inline"><span class="muted" style="width:80px;display:inline-block">名稱 2</span> <input id="exist_name2" type="text" style="width:200px"> <span class="muted" style="width:90px;display:inline-block;margin-left:12px">容量(kW)</span> <input id="exist_kw2" type="number" style="width:120px"></label>
+      <label class="inline"><span class="muted" style="width:80px;display:inline-block">名稱 3</span> <input id="exist_name3" type="text" style="width:200px"> <span class="muted" style="width:90px;display:inline-block;margin-left:12px">容量(kW)</span> <input id="exist_kw3" type="number" style="width:120px"></label>
+      <label class="inline"><span class="muted" style="width:80px;display:inline-block">名稱 4</span> <input id="exist_name4" type="text" style="width:200px"> <span class="muted" style="width:90px;display:inline-block;margin-left:12px">容量(kW)</span> <input id="exist_kw4" type="number" style="width:120px"></label>
+    </div>
+  </div></section>
+
+  <!-- 10 特別約定事項 -->
+  <section class="card"><div class="body">
+    <h2>10) 特別約定事項</h2>
+    <div class="sec">
+      <label class="muted">特別約定事項</label>
+      <textarea id="special_notes" placeholder="請填寫限制、配合事項、里程碑等…"></textarea>
+    </div>
+  </div></section>
 </main>
 
 <footer class="toolbar">
@@ -168,13 +209,10 @@
   <div class="wrap"><div class="hint">提示：手機可直接打開相機拍照上傳（不需安裝 App）。</div></div>
 </footer>
 
-<!-- PptxGenJS from CDN -->
 <script src="https://unpkg.com/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
 <script src="app.js"></script>
 <script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', ()=> navigator.serviceWorker.register('./sw.js'));
-  }
+  if ('serviceWorker' in navigator) window.addEventListener('load', ()=> navigator.serviceWorker.register('./sw.js'));
 </script>
 </body>
 </html>

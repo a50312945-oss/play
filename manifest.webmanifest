@@ -1,5 +1,5 @@
 {
-  "name": "PhotoPPT Mobile（內嵌照片）",
+  "name": "PhotoPPT Mobile Inline v2",
   "short_name": "PhotoPPT",
   "start_url": "./index.html",
   "display": "standalone",
