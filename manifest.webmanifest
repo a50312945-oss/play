@@ -1,0 +1,9 @@
+{
+  "name": "PhotoPPT Mobile（內嵌照片）",
+  "short_name": "PhotoPPT",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0b0f19",
+  "theme_color": "#0b0f19",
+  "lang": "zh-Hant"
+}
